@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh Garlitos - Product Manager</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.8;
+            color: #1a1a1a;
+            background: #ffffff;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        .tagline {
+            font-size: 1em;
+            color: #666;
+            font-weight: 400;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            color: #333;
+            font-size: 0.95em;
+            padding: 6px 0;
+        }
+
+        .skill::before {
+            content: "• ";
+            color: #000;
+            font-weight: bold;
+        }
+
+        .education-item {
+            margin-bottom: 15px;
+        }
+
+        .education-item h3 {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 2px;
+        }
+
+        .education-details {
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.95em;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #000;
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: #666;
+        }
+
+        .social-links a:hover::after {
+            transform: scaleX(1);
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #999;
+            font-size: 0.85em;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 1.75em;
+            }
+
+            section {
+                margin-bottom: 40px;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Josh Garlitos</h1>
+            <p class="tagline">Principal Product Manager @ Amazon Health</p>
+        </header>
+
+        <section>
+            <h2>About</h2>
+            <p>
+                I'm a Principal Product Manager at Amazon Health with over 6 years at Amazon, 
+                specializing in AI-powered healthcare solutions. Currently, I'm leading innovative 
+                initiatives in Amazon Pharmacy to make healthcare more accessible through same-day 
+                delivery and cutting-edge technology.
+            </p>
+            <p>
+                My background spans product management, data science, and applied research across 
+                healthcare, e-commerce, and media. I'm passionate about leveraging AI, machine learning, 
+                and operations research to solve complex problems and improve people's lives.
+            </p>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-item">
+                    <h3>University of Illinois Urbana-Champaign</h3>
+                    <p class="education-details">MS, Computer Science • 2020</p>
+                </div>
+                <div class="education-item">
+                    <h3>Florida State University</h3>
+                    <p class="education-details">BS, Computer Science • 2018</p>
+                </div>
+                <div class="education-item">
+                    <h3>Texas A&M University</h3>
+                    <p class="education-details">MS, Information Systems • 2011</p>
+                </div>
+                <div class="education-item">
+                    <h3>Texas A&M University</h3>
+                    <p class="education-details">BS, Accounting • 2011</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <div class="skills">
+                <span class="skill">Technical Product Management</span>
+                <span class="skill">AI & Machine Learning</span>
+                <span class="skill">Natural Language Processing</span>
+                <span class="skill">Deep Learning</span>
+                <span class="skill">Operations Research</span>
+                <span class="skill">Robotics</span>
+                <span class="skill">Healthcare Technology</span>
+                <span class="skill">Data Science</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>Connect</h2>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/joshgarlitos" target="_blank">LinkedIn</a>
+                <a href="https://github.com/joshgarlitos" target="_blank">GitHub</a>
+                <a href="https://twitter.com/joshgarlitos" target="_blank">Twitter</a>
+                <a href="mailto:josh@example.com">Email</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Josh Garlitos</p>
+        </footer>
+    </div>
+</body>
+</html>
