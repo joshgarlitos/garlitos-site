@@ -30,6 +30,19 @@
             border-bottom: 1px solid #e0e0e0;
         }
 
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .header-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
         h1 {
             font-size: 2em;
             font-weight: 600;
@@ -41,6 +54,43 @@
             font-size: 1em;
             color: #666;
             font-weight: 400;
+        }
+
+        .header-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-end;
+            padding-top: 8px;
+        }
+
+        .header-links-label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            font-weight: 600;
+        }
+
+        .header-links-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .header-links a {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .header-links a:hover {
+            border-color: #000;
+            background-color: #f9f9f9;
         }
 
         section {
@@ -154,6 +204,16 @@
                 font-size: 1.75em;
             }
 
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .header-links {
+                padding-top: 0;
+                align-items: flex-start;
+            }
+
             section {
                 margin-bottom: 40px;
             }
@@ -167,8 +227,19 @@
 <body>
     <div class="container">
         <header>
-            <h1>Josh Garlitos</h1>
-            <p class="tagline">Principal Product Manager @ Amazon Health</p>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Josh Garlitos</h1>
+                    <p class="tagline">Principal Product Manager @ Amazon Health</p>
+                </div>
+                <div class="header-links">
+                    <span class="header-links-label">Contact</span>
+                    <div class="header-links-buttons">
+                        <a href="https://www.linkedin.com/in/joshgarlitos/" target="_blank">LinkedIn</a>
+                        <a href="mailto:josh@garlitos.com">Email</a>
+                    </div>
+                </div>
+            </div>
         </header>
 
         <section>
@@ -214,14 +285,6 @@
                 <span class="skill">Robotics</span>
                 <span class="skill">Healthcare Technology</span>
                 <span class="skill">Data Science</span>
-            </div>
-        </section>
-
-        <section>
-            <h2>Connect</h2>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/joshgarlitos/" target="_blank">LinkedIn</a>
-                <a href="mailto:josh@garlitos.com">Email</a>
             </div>
         </section>
 
