@@ -1,24 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Josh Garlitos - Principal Product Manager at Amazon</title>
-    <meta name="description" content="Josh Garlitos is a Principal Product Manager at Amazon Health with 15+ years building AI and machine learning products at scale. Expert in technical product management, artificial intelligence, and healthcare innovation." />
-    <meta name="author" content="Josh Garlitos" />
+    <meta name="description" content="Josh Garlitos is a Principal Product Manager at Amazon Health with 15+ years building AI and machine learning products at scale. Expert in technical product management, artificial intelligence, and healthcare innovation.">
+    <meta name="author" content="Josh Garlitos">
 
-    <meta property="og:title" content="Josh Garlitos - Principal Product Manager" />
-    <meta property="og:description" content="Building AI and machine learning products at scale. Principal Product Manager at Amazon Health with expertise in technical product management and healthcare innovation." />
-    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Josh Garlitos - Principal Product Manager">
+    <meta property="og:description" content="Building AI and machine learning products at scale. Principal Product Manager at Amazon Health with expertise in technical product management and healthcare innovation.">
+    <meta property="og:type" content="website">
 
-    
     <style>
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-      
+
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #0066cc;
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        z-index: 100;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+
       body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         line-height: 1.6;
@@ -178,6 +192,7 @@
   </head>
 
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="container">
       <header>
         <h1>Josh Garlitos</h1>
@@ -188,7 +203,8 @@
         </div>
       </header>
 
-      <section>
+      <main id="main-content">
+        <section>
         <h2>About</h2>
         <div class="about-text">
           <p>
@@ -232,15 +248,15 @@
         </div>
 
         <div class="experience-item">
-          <h3>Data Science & Revenue Optimization</h3>
+          <h3>Data Science &amp; Revenue Optimization</h3>
           <p class="experience-meta">NBCUniversal Media · Mar 2017 — Jun 2019</p>
           <p class="experience-description">
-            Built dynamic revenue optimization & optimal pricing platform for Ticketing, Food, and Merchandising lines of business.
+            Built dynamic revenue optimization &amp; optimal pricing platform for Ticketing, Food, and Merchandising lines of business.
           </p>
         </div>
 
         <div class="experience-item">
-          <h3>Natural Language Processing & Graph Mining Research</h3>
+          <h3>Natural Language Processing &amp; Graph Mining Research</h3>
           <p class="experience-meta">Florida State University · Feb 2016 — Feb 2017</p>
           <p class="experience-description">
             Led research to identify fraud and deception in online content and reviews through Natural Language Processing (NLP), network/graph analysis, and pattern mining.
@@ -263,6 +279,7 @@
           </p>
         </div>
       </section>
+      </main>
     </div>
   </body>
 </html>
