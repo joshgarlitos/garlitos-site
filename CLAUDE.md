@@ -21,7 +21,8 @@ This is a personal portfolio website for Josh Garlitos, Principal Product Manage
 Since this is a static HTML site with no build tools:
 
 - **Preview changes**: Open `index.html` directly in a browser
-- **No build/test commands**: There is no package.json, build system, or test framework
+- **Run tests**: `npm test` runs HTML validation, accessibility checks, and notes validation
+- **Test individual suites**: `npm run test:html`, `npm run test:a11y`, `npm run test:notes`
 
 ## Content Structure
 
@@ -60,3 +61,48 @@ The page follows this section order:
   - Links have blue color with subtle background changes on hover
   - Border width increases on hover for buttons
   - Smooth transitions (0.2s ease) for all interactive elements
+
+## Notes Section
+
+The site includes a **Notes** section (`/notes/`) - a collection of living topic pages organized by tags.
+
+### Notes Structure
+
+```
+notes/
+├── index.html                              (notes listing page)
+├── product-management-ai-hardware.html     (individual note)
+└── [future-note].html                      (new notes added over time)
+```
+
+### Adding a New Note
+
+1. Create a new HTML file in `notes/` using an existing note as a template
+2. Required meta tags for each note:
+   - `<title>` - Note title followed by "- Josh Garlitos"
+   - `<meta name="description">` - Brief description for SEO
+   - `<meta name="keywords">` - Comma-separated tags
+   - `<link rel="canonical">` - Full URL to the note
+3. Update `notes/index.html` to include the new note card with:
+   - Title and link
+   - Last updated date
+   - Description
+   - Tags
+4. Run `npm test` to validate all notes
+
+### Note Page Template Structure
+
+- Breadcrumb: Home → Notes → Note Title
+- Title (h1)
+- Tags displayed as visual labels
+- Last updated date (subtle)
+- Content sections (h2, h3, paragraphs, lists)
+- Related notes section (optional)
+- Footer with links back to home and notes index
+
+### Validation
+
+The `test-notes.js` script checks:
+- All HTML files in `notes/` are listed in the index
+- No broken internal links between notes
+- All note pages have required meta tags (title, description, canonical)

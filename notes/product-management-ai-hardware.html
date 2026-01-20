@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM at the Intersection of AI and Hardware - Josh Garlitos</title>
+    <meta name="description" content="Exploring the unique challenges and opportunities when building products that combine artificial intelligence, physical hardware, and large-scale operations.">
+    <meta name="keywords" content="product management, AI, hardware, healthcare, machine learning">
+    <meta name="author" content="Josh Garlitos">
+    <link rel="canonical" href="https://www.garlitos.com/notes/product-management-ai-hardware.html">
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background-color: #ffffff;
+        padding: 2rem 1.5rem;
+      }
+
+      .container {
+        max-width: 48rem;
+        margin: 0 auto;
+      }
+
+      header {
+        margin-bottom: 3rem;
+      }
+
+      .breadcrumbs {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+        color: #666;
+      }
+
+      .breadcrumbs a {
+        color: #666;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .breadcrumbs a:hover {
+        color: #0066cc;
+      }
+
+      .breadcrumbs .separator {
+        color: #ccc;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .topic-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .topic-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background-color: #f5f5f5;
+        color: #666;
+        font-size: 0.75rem;
+        border-radius: 12px;
+      }
+
+      .content {
+        margin-bottom: 3rem;
+      }
+
+      .content h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .content h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .content p {
+        margin-bottom: 1rem;
+        line-height: 1.7;
+        text-align: justify;
+      }
+
+      .content ul, .content ol {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+
+      .content li {
+        margin-bottom: 0.5rem;
+        line-height: 1.7;
+      }
+
+      .content blockquote {
+        border-left: 3px solid #e5e5e5;
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+        color: #666;
+        font-style: italic;
+      }
+
+      .related-topics {
+        border-top: 1px solid #e5e5e5;
+        padding-top: 2rem;
+        margin-top: 3rem;
+      }
+
+      .related-topics h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .related-topics ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .related-topics li {
+        margin-bottom: 0.75rem;
+      }
+
+      .related-topics a {
+        color: #1a1a1a;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .related-topics a:hover {
+        color: #0066cc;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e5e5e5;
+        text-align: center;
+        color: #666;
+        font-size: 0.875rem;
+      }
+
+      @media (min-width: 768px) {
+        body {
+          padding: 4rem 1.5rem;
+        }
+
+        h1 {
+          font-size: 3rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <nav class="breadcrumbs">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/notes/">Notes</a>
+          <span class="separator">/</span>
+          <span>Product Management at the Intersection of AI and Hardware</span>
+        </nav>
+        <h1>Product Management at the Intersection of AI and Hardware</h1>
+        <div class="topic-meta">
+          <span>Last updated: January 15, 2025</span>
+        </div>
+        <div class="topic-tags">
+          <span class="tag">Product Management</span>
+          <span class="tag">AI</span>
+          <span class="tag">Hardware</span>
+          <span class="tag">Healthcare</span>
+        </div>
+      </header>
+
+      <article class="content">
+        <p>
+          Building products that combine AI, physical hardware, and large-scale operations presents a unique set of challenges that differ significantly from pure software or hardware-only products. This note explores frameworks and lessons learned from shipping products in this space.
+        </p>
+
+        <h2>The Three-Dimensional Product Space</h2>
+
+        <p>
+          When you're building at the intersection of AI, hardware, and operations, you're essentially managing three interconnected systems simultaneously. Each has its own constraints, timelines, and failure modes:
+        </p>
+
+        <ul>
+          <li><strong>AI/Software:</strong> Fast iteration cycles, but requires data and continuous improvement</li>
+          <li><strong>Hardware:</strong> Long lead times, physical constraints, reliability requirements</li>
+          <li><strong>Operations:</strong> Human processes, training, real-world variability</li>
+        </ul>
+
+        <p>
+          The key insight is that these three dimensions don't just add complexity—they multiply it. A change in one dimension often requires coordinated changes in the others.
+        </p>
+
+        <h2>Design Principles</h2>
+
+        <h3>1. Start with the Physical Constraints</h3>
+
+        <p>
+          Unlike pure software products where you can iterate quickly, hardware sets hard boundaries on what's possible. Begin your product design by understanding these constraints deeply. What are the physical limitations? What's the reliability requirement? How does the environment affect performance?
+        </p>
+
+        <h3>2. AI as an Enabler, Not the Product</h3>
+
+        <p>
+          In hardware products, AI should solve specific, well-defined problems within the larger system. The temptation is to lead with "AI-powered," but users care about outcomes. The AI needs to be invisible, reliable, and demonstrably better than alternatives.
+        </p>
+
+        <h3>3. Design for Operations from Day One</h3>
+
+        <p>
+          How will this be maintained? Who responds when something breaks? What training is required? These aren't afterthoughts—they're core product decisions that affect everything from hardware choices to software architecture.
+        </p>
+
+        <h2>Key Challenges</h2>
+
+        <h3>Synchronizing Different Timelines</h3>
+
+        <p>
+          Hardware development might take 6-12 months, while AI models can be retrained weekly. How do you maintain velocity when components move at different speeds? The answer usually involves building in flexibility and maintaining clear interfaces between systems.
+        </p>
+
+        <h3>Balancing Automation and Human Touch</h3>
+
+        <p>
+          Complete automation is rarely the right answer in physical systems. The question is: where should humans be in the loop? This requires understanding failure modes, trust dynamics, and regulatory requirements.
+        </p>
+
+        <h2>Lessons Learned</h2>
+
+        <ul>
+          <li>Ship hardware that can evolve via software updates</li>
+          <li>Build operational playbooks alongside the product</li>
+          <li>Invest heavily in simulation and testing before physical deployment</li>
+          <li>Create feedback loops between operations, hardware, and AI teams</li>
+          <li>Be conservative with reliability requirements—hardware failures are expensive</li>
+        </ul>
+
+        <h2>Looking Forward</h2>
+
+        <p>
+          As AI capabilities continue to improve and hardware becomes more sophisticated, the opportunity space for AI-powered hardware products is expanding rapidly. The winners will be those who can manage the complexity of these multi-dimensional systems while maintaining a relentless focus on user outcomes and operational excellence.
+        </p>
+      </article>
+
+      <footer>
+        <p><a href="/" style="color: #666; text-decoration: none;">Josh Garlitos</a> · <a href="/notes/" style="color: #666; text-decoration: none;">Notes</a></p>
+      </footer>
+    </div>
+  </body>
+</html>
