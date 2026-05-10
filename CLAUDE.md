@@ -8,13 +8,13 @@ This is a personal portfolio website for Josh Garlitos, Principal Product Manage
 
 ## Architecture
 
-**Single File Structure**: The entire website is contained in `index.html` with inline CSS styling. There are no external stylesheets, JavaScript files, or dependencies.
+**Single File Structure**: The homepage is contained in `index.html` with inline CSS styling. There are no external stylesheets, JavaScript files, or build dependencies. Each note under `notes/` is a standalone HTML file with its own inline styles.
 
-**Assets Directory**: Profile images and other assets are stored in the `images/` directory. The profile photo is located at `images/profile.jpg`.
+**Assets Directory**: The `images/` directory exists for assets but is not currently used by the homepage.
 
-**Design Philosophy**: Clean, minimal design inspired by LinkedIn's professional aesthetic. Uses card-based layout with subtle shadows, system fonts, and a blue accent color scheme with subtle hover effects.
+**Design Philosophy**: Clean, minimal, text-first design. White background, generous whitespace, system fonts, and a single blue accent color for links. No cards, banners, or profile photos on the homepage.
 
-**Responsive Design**: Mobile-first approach with breakpoints at 768px for smaller devices. Profile layout switches from horizontal to vertical on mobile.
+**Responsive Design**: Mobile-first approach with a single breakpoint at 768px that bumps body padding and h1 size.
 
 ## Development
 
@@ -26,41 +26,32 @@ Since this is a static HTML site with no build tools:
 
 ## Content Structure
 
-The page follows this section order:
-1. Profile Header Card - Contains:
-   - LinkedIn-style blue gradient banner
-   - Profile photo (200px circular, positioned left on desktop)
-   - Name, title, and contact links (LinkedIn, Email)
-   - Horizontal layout on desktop (photo left, info right), vertical on mobile
-2. About Card - Professional summary
-3. Recent Topics Card - Blog/article previews with lorem ipsum placeholder content
-4. Education Card - 4 degrees listed vertically with separators
-5. Skills Card - Technical competencies displayed as pills
-6. Footer with copyright
+The homepage (`index.html`) follows this section order:
+1. Header — Name (h1), title/subtitle, and contact links (Email, LinkedIn, Notes)
+2. About — Two short professional summary paragraphs
+3. Recent Notes — Latest note(s) surfaced inline, with a "View all notes →" link to `/notes/`
+4. Experience — Amazon role timeline (with vertical dotted timeline UI) followed by prior roles as flat entries
+
+There is no footer on the homepage.
 
 ## Styling Conventions
 
-- **Font System**: Uses system fonts via `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif`
+- **Font System**: Uses system fonts via `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`
 - **Color Palette**:
-  - Primary text: `#000000e6` (black with 90% opacity)
-  - Secondary text: `#00000099` (black with 60% opacity)
-  - Primary blue: `#0a66c2` (LinkedIn blue for links and banner)
-  - Borders/separators: `#e8e6e1`
-  - Background: `#f3f2ef` (off-white)
-  - Card background: `#ffffff`
+  - Primary text: `#1a1a1a`
+  - Secondary text: `#666`
+  - Accent blue (links/hover): `#0066cc`
+  - Borders/separators: `#e5e5e5` (notes pages), `#d0d0d0` (timeline rail)
+  - Background: `#ffffff`
+  - Tag background: `#f5f5f5`
 - **Layout**:
-  - Centered container with 1128px max-width
-  - Card-based design with 8px gaps between cards
-  - Cards have rounded corners (8px) and subtle shadows
-- **Profile Photo**:
-  - Desktop: 200px × 200px circular
-  - Mobile: 140px × 140px circular
-  - 4px white border with subtle shadow
-- **Spacing**: Consistent padding (24px on desktop, 16px on mobile) and 8px gaps between major sections
-- **Interactive Elements**:
-  - Links have blue color with subtle background changes on hover
-  - Border width increases on hover for buttons
-  - Smooth transitions (0.2s ease) for all interactive elements
+  - Centered container, `max-width: 48rem`
+  - Body padding: `2rem 1.5rem` (mobile), `4rem 1.5rem` (≥768px)
+  - Section spacing: `4rem` bottom margin between sections
+- **Timeline (Experience → Amazon)**:
+  - `.positions-timeline` uses a 1px vertical rail with circular dots on each `.position-item`
+- **Tags (Recent Notes)**: Pill-shaped, `#f5f5f5` background, `12px` border-radius, used inline under note descriptions
+- **Interactive Elements**: Links transition `color` on hover (0.2s); accent blue (`#0066cc`) on hover
 
 ## Notes Section
 
