@@ -79,7 +79,8 @@ notes/
    - Last updated date
    - Description
    - Tags
-4. Run `npm test` to validate all notes
+4. Add the note's canonical URL to `sitemap.xml` with today's date as `<lastmod>`, and bump the `<lastmod>` on `https://www.garlitos.com/notes/` since the index changed
+5. Run `npm test` to validate all notes
 
 ### Note Page Template Structure
 
@@ -97,3 +98,9 @@ The `test-notes.js` script checks:
 - All HTML files in `notes/` are listed in the index
 - No broken internal links between notes
 - All note pages have required meta tags (title, description, canonical)
+
+## Discoverability
+
+- `sitemap.xml` at the repo root lists every public canonical URL with a `<lastmod>` date. Update it whenever a page is added, removed, or meaningfully changed.
+- `robots.txt` at the repo root allows all crawlers and points to `https://www.garlitos.com/sitemap.xml`.
+- Every page should declare its canonical URL via `<link rel="canonical" href="...">` in `<head>`, matching the URL listed in `sitemap.xml`.
