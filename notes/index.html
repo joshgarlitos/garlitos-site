@@ -20,12 +20,7 @@
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         line-height: 1.6;
         color: #1a1a1a;
-        background-color: #fcfcfa;
-        background-image:
-          linear-gradient(to right, #e7e6db 1px, transparent 1px),
-          linear-gradient(to bottom, #e7e6db 1px, transparent 1px);
-        background-size: 28px 28px;
-        background-position: 0 23px;
+        background-color: #ffffff;
         padding: 2rem 1.5rem;
       }
 
@@ -44,21 +39,21 @@
         gap: 0.5rem;
         font-size: 0.875rem;
         margin-bottom: 1.5rem;
-        color: #6a6a64;
+        color: #666;
       }
 
       .breadcrumbs a {
-        color: #6a6a64;
+        color: #666;
         text-decoration: none;
         transition: color 0.2s;
       }
 
       .breadcrumbs a:hover {
-        color: #1a1a1a;
+        color: #0066cc;
       }
 
       .breadcrumbs .separator {
-        color: #cccccc;
+        color: #ccc;
       }
 
       h1 {
@@ -74,7 +69,7 @@
       }
 
       .topic-card {
-        border-bottom: 1px solid #e5e3d8;
+        border-bottom: 1px solid #e5e5e5;
         padding-bottom: 2rem;
       }
 
@@ -90,18 +85,18 @@
       }
 
       .topic-card h2 a {
-        color: #59670f;
+        color: #1a1a1a;
         text-decoration: none;
         transition: color 0.2s;
       }
 
       .topic-card h2 a:hover {
-        color: #1a1a1a;
+        color: #0066cc;
       }
 
       .topic-meta {
         font-size: 0.875rem;
-        color: #6a6a64;
+        color: #666;
         margin-bottom: 0.75rem;
       }
 
@@ -117,24 +112,11 @@
         gap: 0.5rem;
       }
 
-      .section-heading {
-        font-size: 0.8125rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        color: #6a6a64;
-        margin-bottom: 1.5rem;
-      }
-
-      .topics-section {
-        margin-bottom: 3rem;
-      }
-
       .tag {
         display: inline-block;
         padding: 0.25rem 0.75rem;
-        background-color: #f2f1e8;
-        color: #6a6a64;
+        background-color: #f5f5f5;
+        color: #666;
         font-size: 0.75rem;
         border-radius: 12px;
         text-decoration: none;
@@ -142,15 +124,15 @@
       }
 
       .tag:hover {
-        background-color: #e5e3d8;
+        background-color: #e5e5e5;
       }
 
       footer {
         margin-top: 4rem;
         padding-top: 2rem;
-        border-top: 1px solid #e5e3d8;
+        border-top: 1px solid #e5e5e5;
         text-align: center;
-        color: #6a6a64;
+        color: #666;
         font-size: 0.875rem;
       }
 
@@ -177,25 +159,7 @@
         <h1>Notes</h1>
       </header>
 
-      <div class="topics-list">
-        <div class="topics-section" id="projects">
-          <p class="section-heading">Projects</p>
-          <div class="topic-card">
-            <h2><a href="/notes/generide.html">generide</a></h2>
-            <p class="topic-meta">Last updated July 2026</p>
-            <p class="topic-description">
-              A Python tool for generating roller coaster track files that load directly into OpenRCT2. Phase 1 is done: a real .td6 file round-trips through Python byte-for-byte. Phase 2 is track segment geometry. The long-term goal is a genetic algorithm that evolves coasters players actually want to ride.
-            </p>
-            <div class="topic-tags">
-              <span class="tag">python</span>
-              <span class="tag">OpenRCT2</span>
-              <span class="tag">genetic algorithms</span>
-              <span class="tag">reverse engineering</span>
-              <span class="tag">game development</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="topics-list"></div>
 
       <footer>
         <p>© 2025 Josh Garlitos</p>
