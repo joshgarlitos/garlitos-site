@@ -12,7 +12,7 @@ This is a personal portfolio website for Josh Garlitos, Principal Product Manage
 
 **Assets Directory**: The `images/` directory exists for assets but is not currently used by the homepage.
 
-**Design Philosophy**: Clean, minimal, text-first design. White background, generous whitespace, system fonts, and a single blue accent color for links. No cards, banners, or profile photos on the homepage.
+**Design Philosophy**: Clean, minimal, text-first design. Warm off-white paper background, generous whitespace, system fonts, and a single deep olive accent for links. No cards, banners, or profile photos on the homepage. A faint notebook graph-paper grid (`#e7e6db`, 28px) sits behind the page on most surfaces; on note detail pages it fades out before the prose body so long reading passages stay on plain paper.
 
 **Responsive Design**: Mobile-first approach with a single breakpoint at 768px that bumps body padding and h1 size.
 
@@ -37,21 +37,28 @@ There is no footer on the homepage.
 ## Styling Conventions
 
 - **Font System**: Uses system fonts via `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`
-- **Color Palette**:
+- **Color Palette** (Garlitos Design System):
   - Primary text: `#1a1a1a`
-  - Secondary text: `#666`
-  - Accent blue (links/hover): `#0066cc`
-  - Borders/separators: `#e5e5e5` (notes pages), `#d0d0d0` (timeline rail)
-  - Background: `#ffffff`
-  - Tag background: `#f5f5f5`
+  - Secondary/muted text: `#6a6a64`
+  - Page background: `#fcfcfa` (warm off-white)
+  - Accent olive (links, default state): `#59670f`
+  - Link hover: `#1a1a1a` (darkens to ink, never brightens)
+  - Borders/dividers: `#e5e3d8`
+  - Timeline rail: `#d8d6c8`
+  - Tag/chip background: `#f2f1e8`
+  - Tag hover: `#e5e3d8`
+  - Breadcrumb separator: `#cccccc`
+  - Notebook grid line: `#e7e6db`
+  - Highlighter: `#d6f84a` (chartreuse, `mix-blend-mode: multiply`, used via `<mark>` in About section only)
 - **Layout**:
   - Centered container, `max-width: 48rem`
   - Body padding: `2rem 1.5rem` (mobile), `4rem 1.5rem` (≥768px)
   - Section spacing: `4rem` bottom margin between sections
 - **Timeline (Experience → Amazon)**:
   - `.positions-timeline` uses a 1px vertical rail with circular dots on each `.position-item`
-- **Tags (Recent Notes)**: Pill-shaped, `#f5f5f5` background, `12px` border-radius, used inline under note descriptions
-- **Interactive Elements**: Links transition `color` on hover (0.2s); accent blue (`#0066cc`) on hover
+- **Tags**: Pill-shaped, `#f2f1e8` background, `12px` border-radius, used inline under note descriptions; hover → `#e5e3d8`
+- **Interactive Elements**: Links transition `color` on hover (0.2s); hover darkens from olive `#59670f` to ink `#1a1a1a`
+- **Design System reference**: `~/Projects/design-system/` — tokens, components, and guidelines. The site's inline CSS values must match the tokens in `tokens/colors.css`, `tokens/typography.css`, `tokens/spacing.css`.
 
 ## Notes Section
 
@@ -61,9 +68,9 @@ The site includes a **Notes** section (`/notes/`) - a collection of living topic
 
 ```
 notes/
-├── index.html                              (notes listing page)
-├── product-management-ai-hardware.html     (individual note)
-└── [future-note].html                      (new notes added over time)
+├── index.html          (notes listing page, with sections per type e.g. "Projects")
+├── generide.html       (project note)
+└── [future-note].html  (new notes added over time)
 ```
 
 ### Adding a New Note
