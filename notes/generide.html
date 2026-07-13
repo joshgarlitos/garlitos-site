@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generide: Evolving Roller Coasters for OpenRCT2 - Josh Garlitos</title>
+    <meta name="description" content="A Python tool that reads, validates, generates, and evolves RollerCoaster Tycoon 2 track designs. Reverse-engineering a 1999 binary format, validating 3D track geometry, and evolving rides with a genetic algorithm.">
+    <meta name="keywords" content="python, genetic algorithms, OpenRCT2, reverse engineering, binary formats, side project">
+    <meta name="author" content="Josh Garlitos">
+    <link rel="canonical" href="https://www.garlitos.com/notes/generide.html">
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background-color: #ffffff;
+        padding: 2rem 1.5rem;
+      }
+
+      .container {
+        max-width: 48rem;
+        margin: 0 auto;
+      }
+
+      header {
+        margin-bottom: 3rem;
+      }
+
+      .breadcrumbs {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+        color: #666;
+      }
+
+      .breadcrumbs a {
+        color: #666;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .breadcrumbs a:hover {
+        color: #0066cc;
+      }
+
+      .breadcrumbs .separator {
+        color: #ccc;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .topic-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.875rem;
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .topic-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background-color: #f5f5f5;
+        color: #666;
+        font-size: 0.75rem;
+        border-radius: 12px;
+      }
+
+      .content {
+        margin-bottom: 3rem;
+      }
+
+      .content h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .content p {
+        margin-bottom: 1rem;
+        line-height: 1.7;
+      }
+
+      .content ul, .content ol {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+
+      .content li {
+        margin-bottom: 0.5rem;
+        line-height: 1.7;
+      }
+
+      .content a {
+        color: #0066cc;
+      }
+
+      .content code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.875em;
+        background-color: #f5f5f5;
+        padding: 0.125rem 0.375rem;
+        border-radius: 4px;
+      }
+
+      .content figure {
+        margin: 2rem 0;
+      }
+
+      .content figure img {
+        width: 100%;
+        height: auto;
+      }
+
+      .content figcaption {
+        font-size: 0.8125rem;
+        color: #666;
+        margin-top: 0.5rem;
+        text-align: center;
+      }
+
+      .stack {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.8125rem;
+        line-height: 1.8;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        padding: 1.25rem 1.5rem;
+        margin: 1.5rem 0;
+        overflow-x: auto;
+      }
+
+      footer {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid #e5e5e5;
+        text-align: center;
+        color: #666;
+        font-size: 0.875rem;
+      }
+
+      footer a {
+        color: #666;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      footer a:hover {
+        color: #0066cc;
+      }
+
+      @media (min-width: 768px) {
+        body {
+          padding: 4rem 1.5rem;
+        }
+
+        h1 {
+          font-size: 3rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <nav class="breadcrumbs">
+          <a href="/">Home</a>
+          <span class="separator">/</span>
+          <a href="/notes/">Notes</a>
+          <span class="separator">/</span>
+          <span>generide</span>
+        </nav>
+        <h1>generide: Evolving Playable Roller Coasters for OpenRCT2</h1>
+        <div class="topic-meta">
+          <span>Last updated: July 12, 2026</span>
+        </div>
+        <div class="topic-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Genetic Algorithms</span>
+          <span class="tag">Reverse Engineering</span>
+          <span class="tag">OpenRCT2</span>
+          <span class="tag">Side Project</span>
+        </div>
+      </header>
+
+      <article class="content">
+        <p>
+          <a href="https://github.com/joshgarlitos/generide" target="_blank" rel="noopener noreferrer">generide</a> is a Python tool that reads, validates, generates, and evolves RollerCoaster Tycoon 2 track designs. It works directly with the game's <code>.td6</code> file format, and the tracks it produces load and run in <a href="https://openrct2.org/" target="_blank" rel="noopener noreferrer">OpenRCT2</a>, the open-source reimplementation of the game.
+        </p>
+        <p>
+          I grew up playing RollerCoaster Tycoon 2, and I started this project because I wanted to know whether I could write a program that designs new rides and gets them running in the game. Answering that meant working through a 1999-era binary file format, three-dimensional track geometry, the game's construction rules, approximate physics, and a genetic algorithm that has to produce something the game will accept.
+        </p>
+
+        <h2>Why generating a coaster is hard</h2>
+        <p>
+          A coaster has to form a closed circuit, avoid colliding with itself, stay inside its footprint, transition cleanly between slopes and banks, put a chain lift where the train needs one, and preserve enough energy to finish the course. A random list of track pieces fails nearly all of these at once, so a generator has to understand the game's construction rules well enough to satisfy every one of them in the same design.
+        </p>
+        <p>
+          There is also a file format between the Python code and the game. Before generating anything, I had to prove I understood that format, because a design the game silently refuses to load tells you nothing about whether the design was any good.
+        </p>
+
+        <h2>The file format problem</h2>
+        <p>
+          A <code>.td6</code> file is how the game saves and shares individual ride designs. There is no official spec, only a community-maintained document that is mostly accurate and occasionally wrong. The format has two layers. The outer layer is a run-length encoding scheme RCT2 has used since 1999, where a single control byte says whether the next chunk is literal data or one repeated byte. The inner layer is a flat binary structure with values at fixed offsets, some of them bit-packed because in 1999 every byte mattered. A custom checksum protects the file, so one wrong byte means the game rejects the whole design.
+        </p>
+
+        <figure>
+          <img src="assets/rle-diagram.svg" alt="Diagram of RCT2 run-length encoding showing its two modes. In a literal run, a control byte below 128 is followed by that many literal bytes copied as-is. In a repeat run, a control byte of 128 or above is followed by one byte that gets repeated.">
+          <figcaption>RCT2's run-length encoding. One control byte selects between a literal run and a repeat run.</figcaption>
+        </figure>
+
+        <p>
+          Some header fields are still not fully understood. generide preserves those bytes during a round trip instead of discarding them, so a file it reads and rewrites comes back byte for byte identical to the original even where the code does not interpret the contents.
+        </p>
+
+        <h2>The stack</h2>
+        <p>
+          The project is structured as a stack, and each layer is only useful if the layers below it hold up.
+        </p>
+        <div class="stack">genetic algorithm<br>
+&nbsp;&nbsp;&darr;<br>
+segment genome and construction rules<br>
+&nbsp;&nbsp;&darr;<br>
+3D geometry, occupancy, and validation<br>
+&nbsp;&nbsp;&darr;<br>
+TD6 serialization, compression, and checksum<br>
+&nbsp;&nbsp;&darr;<br>
+OpenRCT2</div>
+        <p>
+          A high fitness score is not useful if the circuit does not close, and a valid Python object is not useful if the game rejects the file. Construction validation is shared across generation, scoring, and export, so every part of the program uses the same definition of a valid ride. Building bottom-up also made debugging tractable, because when a generated coaster failed to load I could tell whether the bug was in the generator, the encoder, or the geometry math.
+        </p>
+
+        <h2>How evolution works</h2>
+        <p>
+          Each coaster is represented as a list of TD6 segment IDs. That list is both the genome the algorithm mutates and the literal track written to the final file. The evolutionary loop creates a population, scores each candidate, selects parents through tournament selection, applies crossover and mutation, and carries the strongest candidates into the next generation. Every run is seeded, so an interesting result or an interesting failure can be reproduced.
+        </p>
+        <p>
+          Fitness is currently a proxy. It rewards coaster-like qualities such as length, elevation change, turn balance, and segment variety, and it applies heavy penalties to designs that cannot be built or completed. It does not yet reproduce the game's own excitement, intensity, and nausea ratings, and connecting candidate evaluation to those ratings is the next major step.
+        </p>
+        <p>
+          The mutation system is intentionally conservative. Slope and bank transitions are inserted as complete legal sequences, because OpenRCT2 treats them as stateful construction operations. That approach builds working tracks but cannot reach every supported piece, including steep drops. The next mutation design will ask the validator which pieces are legal at a specific point instead of choosing from a small collection of pre-built sequences.
+        </p>
+
+        <h2>Where it stands</h2>
+        <p>
+          Today generide can evolve a Mine Train layout, export it with a valid checksum, and run it in OpenRCT2, including stations, entrances, and exits. The project has 119 passing tests, including regression tests against real rides exported from the game. Reading and writing TD6 files, reconstructing and validating geometry, and authoring a coaster in Python that runs in-game are complete. Evolution is in progress.
+        </p>
+
+        <h2>How I build it</h2>
+        <p>
+          I use AI coding tools throughout the project for research, implementation, debugging, and review. They are only useful here because the workflow lets me check their output. I test assumptions against real exported rides, keep binary parsing separate from geometry and evolution, and write a regression test for every failure found in the game. One reference implementation, a Go project called <a href="https://github.com/kevinburke/rct" target="_blank" rel="noopener noreferrer">kevinburke/rct</a>, had a file structure worth borrowing and a sine/cosine bug in its geometry. Treating the reference as evidence rather than authority kept that bug out of this implementation.
+        </p>
+        <p>
+          The code, architecture guide, roadmap, and development log are all in the <a href="https://github.com/joshgarlitos/generide" target="_blank" rel="noopener noreferrer">GitHub repository</a>.
+        </p>
+      </article>
+
+      <footer>
+        <p><a href="/">Home</a> · <a href="/notes/">Notes</a></p>
+        <p>© 2026 Josh Garlitos</p>
+      </footer>
+    </div>
+  </body>
+</html>
